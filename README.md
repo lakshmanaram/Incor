@@ -1,2 +1,3 @@
-# Program-runner
-runs the changed files in a folder automatically in terminal
+# INCOR
+INstant COde Runner
+runs the programs present in the mentioned folder instantaneously as and when changes are made. 
