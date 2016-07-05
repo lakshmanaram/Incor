@@ -1,1 +1,2 @@
 watchdog==0.8.2
+subprocess32==3.2.7
