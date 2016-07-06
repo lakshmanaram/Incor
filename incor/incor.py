@@ -1,9 +1,8 @@
 import sys
-import time
+import os
 from watchdog.observers import Observer
-
 import incor
-from incor.EventHandler import EventHandler
+from EventHandler import EventHandler
 
 
 def main():
@@ -13,11 +12,15 @@ def main():
         print('incor v' + incor.__version__)
         return
     observer = Observer()
-    observer.schedule(EventHandler(path), path, recursive=True)
+    eventHandler = EventHandler(path)
+    observer.schedule(eventHandler, path, recursive=True)
     observer.start()
     try:
         while True:
-            time.sleep(1)
+            if eventHandler.newcmd:
+                eventHandler.newcmd=False
+                os.system(eventHandler.cmd)
+                print "done"
     except KeyboardInterrupt:
         observer.stop()
     observer.join()
