@@ -1,3 +1,4 @@
+import time
 import sys
 from watchdog.observers import Observer
 import incor
@@ -16,13 +17,20 @@ def main():
     observer.start()
     try:
         while True:
-            x = raw_input()
             p = eventHandler.p
             if p is not None:
-                stdout,stderr = p.communicate(x)
-                print stdout
-                if stderr is not None:
-                    print stderr
+                p.poll()
+                if p.returncode is not None:
+                    while True:
+                        try:
+                            out1 = p.stdout.read()
+                        except IOError:
+                            continue
+                        else:
+                            break
+                    print p.stdout.read()
+                    x = raw_input()
+                    p.stdin.write(x)
     except KeyboardInterrupt:
         observer.stop()
     observer.join()
