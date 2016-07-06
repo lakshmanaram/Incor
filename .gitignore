@@ -4,3 +4,6 @@ test.py
 __pycache__
 *.egg-info
 .idea/
+*.swp
+.idea/*
+
