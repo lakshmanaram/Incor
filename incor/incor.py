@@ -3,7 +3,7 @@ import time
 from watchdog.observers import Observer
 
 import incor
-from incor import EventHandler
+from incor.EventHandler import EventHandler
 
 
 def main():
