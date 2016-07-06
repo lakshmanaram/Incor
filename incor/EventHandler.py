@@ -3,19 +3,19 @@ import signal
 import time
 from watchdog.events import FileSystemEventHandler
 from subprocess32 import Popen,PIPE,call
+import psutil
 
 class EventHandler(FileSystemEventHandler):
 
     # TODO Add docstrings
 
-    # parentpid = None
-    p = None
+    parentpid = None
+    cmd = None
+    newcmd = False
     lastCall = ''
-    fw = None
-    # existing_Children = None
+    existing_Children = None
 
     def __init__(self, path):
-
         self.path = path
 
     def on_modified(self, event):
@@ -25,20 +25,22 @@ class EventHandler(FileSystemEventHandler):
             file_extension = cur_path.split('.')[-1]
             if file_extension == 'py':
                 try:
-                    self.p.terminate()
-                    self.fw.close()
-                    print self.lastCall
-                    self.p = None
-                    time.sleep(1)
-                except AttributeError:
-                    pass
-                finally:
-                    self.lastCall = 'python ' + cur_path + ' call terminated'
-                    call('clear',shell=True)
-                    print('issuing system call - python ' + cur_path)
-                    self.fw=open("tmpout","wb")
-                    self.p = Popen('python ' + cur_path,stdin=PIPE,stdout=self.fw,stderr=self.fw,shell=True,bufsize=1)
-
+                    parent = psutil.Process(self.parentpid)
+                except psutil.NoSuchProcess:
+                    print 'No such process'
+                Children = parent.children(recursive=True)
+                print Children
+                print self.existing_Children
+                for process in Children:
+                    if process not in self.existing_Children:
+                        process.send_signal(signal.SIGTERM)
+                # call('clear', shell=True)
+                print self.lastCall
+                self.lastCall = 'python ' + cur_path + ' call terminated'
+                print('issuing system call - python ' + cur_path)
+                self.cmd = 'python ' + cur_path
+                self.newcmd = True
+                time.sleep(1)
 
     def on_created(self, event):
         cur_path = ''

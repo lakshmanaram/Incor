@@ -4,7 +4,8 @@ import os
 from watchdog.observers import Observer
 import incor
 from EventHandler import EventHandler
-# import psutil
+import psutil
+from subprocess import call
 
 def main():
 
@@ -17,27 +18,19 @@ def main():
     eventHandler.parentpid = os.getpid()
     observer.schedule(eventHandler, path, recursive=True)
     observer.start()
-    # parent = None
-    # try:
-    #     parent = psutil.Process(eventHandler.parentpid)
-    # except psutil.NoSuchProcess:
-    #     print 'No such process'
-    # eventHandler.existing_Children = parent.children(recursive=True)
+    parent = None
+    try:
+        parent = psutil.Process(eventHandler.parentpid)
+    except psutil.NoSuchProcess:
+        print 'No such process'
+    eventHandler.existing_Children = parent.children(recursive=True)
+    print eventHandler.existing_Children
     try:
         while True:
-            p = eventHandler.p
-            if p is not None:
-                fr = open('tmpout', 'r')
-                p.poll()
-                if p.returncode is not None:
-                    p.communicate()
-                while p.returncode is not None:
-                    print fr.read()
-                    if p is not None:
-                        p.stdin.write(raw_input()+"\n")
-                    print fr.read()
-                    p.poll()
-                fr.close()
+            if eventHandler.newcmd:
+                eventHandler.newcmd = False
+                call(eventHandler.cmd,shell=True)
+
     except KeyboardInterrupt:
         observer.stop()
     observer.join()
