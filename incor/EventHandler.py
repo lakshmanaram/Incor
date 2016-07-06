@@ -3,22 +3,16 @@ import signal
 import time
 from watchdog.events import FileSystemEventHandler
 from subprocess32 import Popen,PIPE,call
-import fcntl
-
-def setNonBlocking(fd):
-    """
-    Set the file description of the given file descriptor to non-blocking.
-    """
-    flags = fcntl.fcntl(fd, fcntl.F_GETFL)
-    flags = flags | os.O_NONBLOCK
-    fcntl.fcntl(fd, fcntl.F_SETFL, flags)
 
 class EventHandler(FileSystemEventHandler):
 
     # TODO Add docstrings
 
+    # parentpid = None
     p = None
     lastCall = ''
+    fw = None
+    # existing_Children = None
 
     def __init__(self, path):
 
@@ -32,7 +26,9 @@ class EventHandler(FileSystemEventHandler):
             if file_extension == 'py':
                 try:
                     self.p.terminate()
+                    self.fw.close()
                     print self.lastCall
+                    self.p = None
                     time.sleep(1)
                 except AttributeError:
                     pass
@@ -40,9 +36,9 @@ class EventHandler(FileSystemEventHandler):
                     self.lastCall = 'python ' + cur_path + ' call terminated'
                     call('clear',shell=True)
                     print('issuing system call - python ' + cur_path)
-                    self.p = Popen('python ' + cur_path,stdin=PIPE,stdout=PIPE,stderr=PIPE,shell=True,bufsize=1)
-                    setNonBlocking(self.p.stdout)
-                    setNonBlocking(self.p.stderr)
+                    self.fw=open("tmpout","wb")
+                    self.p = Popen('python ' + cur_path,stdin=PIPE,stdout=self.fw,stderr=self.fw,shell=True,bufsize=1)
+
 
     def on_created(self, event):
         cur_path = ''
