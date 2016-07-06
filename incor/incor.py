@@ -13,7 +13,7 @@ def main():
         print('incor v' + incor.__version__)
         return
     observer = Observer()
-    observer.schedule(EventHandler(), path, recursive=True)
+    observer.schedule(EventHandler(path), path, recursive=True)
     observer.start()
     try:
         while True:

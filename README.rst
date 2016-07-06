@@ -46,3 +46,10 @@ Or else you can run it directly with the path of the directory.
 
     incor /path/to/the/directory
 
+Using Templates
+---------------
+
+You can also add some template files in the directory where incor runs. The template files should be of the form 'template.(some_extension)' for example 'template.c' or 'template.py'. 
+Whenever a new empty file is created inside the working directory with a particular extension, Incor searches for a template file with the same extension and writes the template into the newly created file.
+
+
