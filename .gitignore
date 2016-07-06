@@ -1,4 +1,6 @@
 subd/*
 *.pyc
 test.py
-
+__pycache__
+*.egg-info
+.idea/
