@@ -23,6 +23,7 @@ def main():
 
     def get_arg(arg, default=None):
         try:
+            global ind
             ind = sys.argv.index(arg)
             value = sys.argv[ind + 1]
             if value not in flag_list:
@@ -33,14 +34,17 @@ def main():
                 return True, default
         except ValueError:
             return False, default
+        except IndexError:
+            sys.argv = sys.argv[:ind]
+            return True, default
 
-    present,template = get_arg('-t', template)
-    present,input_name = get_arg('-i')
+    present, template = get_arg('-t', template)
+    present, input_name = get_arg('-i')
     if input_name is None and present:
         input_name = 'input.txt'
-    present,compilers[0] = get_arg('-cpp', compilers[0])
-    present,compilers[1] = get_arg('-c', compilers[1])
-    present,compilers[2] = get_arg('-py', compilers[2])
+    present, compilers[0] = get_arg('-cpp', compilers[0])
+    present, compilers[1] = get_arg('-c', compilers[1])
+    present, compilers[2] = get_arg('-py', compilers[2])
 
     path = sys.argv[1] if len(sys.argv) > 1 else '.'
     if path == '--version':
@@ -68,7 +72,8 @@ def main():
             if input_name in files:
                 input_file = os.path.join(root, input_name)
                 break
-
+        if input_file is None:
+            print(input_name+' not found')
     eventhandler = EventHandler(path, compilers)
     eventhandler.parentPid = os.getpid()  # parent process pid
     eventhandler.TemplateName = template
