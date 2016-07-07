@@ -23,7 +23,7 @@ def main():
         print('incor v' + incor.__version__)
         return
     if path == '-h' or path == '--help':
-        print("""incor can be configured for a run using these flags -
+        print("""incor can be configured for a run using these options -
 
     -i   : To specify the input file for the to be compiled program.
     -t   : To specify the path to template file.
@@ -34,27 +34,26 @@ def main():
         """)
         return
 
-    def get_arg(arg):
+    def get_arg(arg, default=None):
         try:
             ind = sys.argv.index(arg)
             value = sys.argv[ind + 1]
             sys.argv = sys.argv[:ind] + sys.argv[ind + 2:]
             return value
         except ValueError:
-            return None
+            return default
 
-    assign_arg = lambda default, value: default if value is None else value
-
-    template = assign_arg(template, get_arg('-t'))
-    input_name = assign_arg(None, get_arg('-i'))
+    template = get_arg('-t', template)
+    input_name = get_arg('-i')
     if input_name is not None:
         for root, dirs, files in os.walk(path):
             if input_name in files:
                 input_file = os.path.join(root, input_name)
                 break
-    compilers[0] = assign_arg(compilers[0], get_arg('-cpp'))
-    compilers[1] = assign_arg(compilers[1], get_arg('-c'))
-    compilers[2] = assign_arg(compilers[2], get_arg('-py'))
+
+    compilers[0] = get_arg('-cpp', compilers[0])
+    compilers[1] = get_arg('-c', compilers[1])
+    compilers[2] = get_arg('-py', compilers[2])
 
     eventhandler = EventHandler(path, compilers)
     eventhandler.parentPid = os.getpid()  # parent process pid
