@@ -8,3 +8,6 @@ __pycache__
 .idea/*
 build/*
 dist/*
+_build
+_static
+_templates

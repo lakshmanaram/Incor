@@ -9,6 +9,11 @@ from subprocess import call
 
 
 def main():
+
+    """
+    The entry function for the command 'incor' in terminal
+    """
+
     template = 'template.'
     input_file = None
 

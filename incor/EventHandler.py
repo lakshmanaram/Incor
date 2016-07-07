@@ -6,7 +6,11 @@ import psutil
 
 
 class EventHandler(FileSystemEventHandler):
-    # TODO Add docstrings
+
+    """
+    The class inherited from watchdog.events.FileSystemEventHandler, overrides the functions on_modified() and
+    on_created() from the base class.
+    """
 
     def __init__(self, path):
         self.path = path
@@ -17,6 +21,12 @@ class EventHandler(FileSystemEventHandler):
         self.lastCall = ''
 
     def on_modified(self, event):
+
+        """
+        Overrides the function on_modified() from the base class
+        :param watchdog.events.FileModifiedEvent event: Specifies the type of event
+        """
+
         if not event.is_directory:
             # Checks whether the created event is not a directory event
             cur_path = event.src_path
@@ -104,6 +114,12 @@ class EventHandler(FileSystemEventHandler):
                     self.newCmd = True
 
     def on_created(self, event):
+
+        """
+        Overrides the function on_created() from the base class
+        :param watchdog.events.FileCreatedEvent event: Specifies the type of event
+        """
+
         if not event.is_directory:
             cur_path = event.src_path
             file_extension = cur_path.split('.')[-1]
