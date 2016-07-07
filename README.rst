@@ -64,7 +64,7 @@ Configuring INCOR
 
 incor can be configured for a run using these options -
 
-    -i    To specify the input file for the to be compiled program.
+    -i    To specify the input file name for the to be compiled program(with extension).
     -t    To specify the name of template file(without extension).
     -c    To specify the C compiler to be used.
     -cpp  To specify the C++ compiler to be used.

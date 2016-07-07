@@ -22,8 +22,12 @@ def main():
         try:
             ind = sys.argv.index(arg)
             value = sys.argv[ind + 1]
-            sys.argv = sys.argv[:ind] + sys.argv[ind + 2:]
-            return value
+            if value not in flag_list:
+                sys.argv = sys.argv[:ind] + sys.argv[ind + 2:]
+                return value
+            else:
+                sys.argv = sys.argv[:ind] + sys.argv[ind + 1:]
+                return default
         except ValueError:
             return default
 
@@ -33,14 +37,14 @@ def main():
     compilers[1] = get_arg('-c', compilers[1])
     compilers[2] = get_arg('-py', compilers[2])
 
-    path = sys.argv[1] if len(sys.argv) > 1 and sys.argv[1] not in flag_list else '.'
+    path = sys.argv[1] if len(sys.argv) > 1 else '.'
     if path == '--version':
         print('incor v' + incor.__version__)
         return
     elif path == '-h' or path == '--help':
         print("""incor can be configured for a run using these options -
 
-    -i   : To specify the input file for the to be compiled program.
+    -i   : To specify the input file name for the to be compiled program(with extension).
     -t   : To specify the name of template file(without extension).
     -c   : To specify the C compiler to be used.
     -cpp : To specify the C++ compiler to be used.
@@ -49,6 +53,8 @@ def main():
         """)
         return
     else:
+        sys.argv = sys.argv[1:]
+        path = " ".join(sys.argv) if len(sys.argv) > 0 else '.'
         os.chdir(path)
         path = '.'
 
