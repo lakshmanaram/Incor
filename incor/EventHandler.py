@@ -6,7 +6,6 @@ import psutil
 
 
 class EventHandler(FileSystemEventHandler):
-
     # TODO Add docstrings
 
     parentPid = None
@@ -34,8 +33,36 @@ class EventHandler(FileSystemEventHandler):
                 call('clear', shell=True)
                 if children:
                     print 'Previously executing processes terminated'
-                print('issuing system call - python ' + cur_path)
                 self.cmd = 'python ' + cur_path
+                print('issuing system call - ' + self.cmd)
+                self.newCmd = True
+            elif file_extension == "cpp":
+                parent = ''
+                try:
+                    parent = psutil.Process(self.parentPid)
+                except psutil.NoSuchProcess:
+                    print 'No such process'
+                children = parent.children(recursive=True)
+                for process in children:
+                    process.send_signal(signal.SIGKILL)
+                call('clear', shell=True)
+                if children:
+                    print 'Previously executing processes terminated'
+                out_path = cur_path[:-3] + 'out'
+
+                # removes the existing output file
+                self.cmd = 'rm ' + out_path
+                print('issuing system call - ' + self.cmd)
+                call(self.cmd, shell=True)
+
+                # compiles the cpp program
+                self.cmd = 'g++ ' + cur_path + ' -o ' + out_path
+                print('issuing system call - ' + self.cmd)
+                call(self.cmd, shell=True)
+                # TODO check corner cases, handle errors while execution
+                self.cmd = './' + out_path
+                # './' in the beginning is necessary for execution but an extra './' doesn't affect the output
+                print('issuing system call - ' + self.cmd)
                 self.newCmd = True
 
     def on_created(self, event):
