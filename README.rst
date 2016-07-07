@@ -4,6 +4,10 @@ INCOR
 INstant COde Runner
 runs the programs present in the mentioned directory instantaneously as and when changes are saved. 
 
+.. image:: https://landscape.io/github/lakshmanaram/Program-runner/master/landscape.svg?style=flat
+   :target: https://landscape.io/github/lakshmanaram/Program-runner/master
+   :alt: Code Health
+
 Requirements
 ------------
 
