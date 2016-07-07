@@ -10,6 +10,7 @@ try:
 except ImportError:
     from incor import EventHandler
 
+
 def main():
     """
     The entry function for the command 'incor' in terminal
@@ -29,15 +30,17 @@ def main():
                 return value
             else:
                 sys.argv = sys.argv[:ind] + sys.argv[ind + 1:]
-                return default
+                return True, default
         except ValueError:
-            return default
+            return False, default
 
-    template = get_arg('-t', template)
-    input_name = get_arg('-i', 'input.txt')
-    compilers[0] = get_arg('-cpp', compilers[0])
-    compilers[1] = get_arg('-c', compilers[1])
-    compilers[2] = get_arg('-py', compilers[2])
+    present,template = get_arg('-t', template)
+    present,input_name = get_arg('-i')
+    if input_name is None and present:
+        input_name = 'input.txt'
+    present,compilers[0] = get_arg('-cpp', compilers[0])
+    present,compilers[1] = get_arg('-c', compilers[1])
+    present,compilers[2] = get_arg('-py', compilers[2])
 
     path = sys.argv[1] if len(sys.argv) > 1 else '.'
     if path == '--version':
