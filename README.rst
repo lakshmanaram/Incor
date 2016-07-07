@@ -5,7 +5,7 @@ INstant COde Runner
 runs the programs present in the mentioned directory instantaneously as and when changes are saved. 
 
 +-----------------+--------------------------+
-| Quality         | Documentation            |
+| Quality         | Docs                     |
 +=================+==========================+
 | |Code Health|   | |Documentation Status|   |
 +-----------------+--------------------------+
@@ -30,7 +30,7 @@ Clone this repository to get started.
 
 .. code-block:: bash
 
-    git clone https://github.com/lakshmanaram/Program-runner.git
+    git clone https://github.com/lakshmanaram/Incor.git
 
 And install it.
 

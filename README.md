@@ -3,7 +3,7 @@ INCOR
 
 INstant COde Runner runs the programs present in the mentioned directory instantaneously as and when changes are saved.
 
-| Quality | Documentation |
+| Quality | Docs |
 | --------|---------------|
 | [![Code Health](https://landscape.io/github/lakshmanaram/Program-runner/master/landscape.svg?style=flat)](https://landscape.io/github/lakshmanaram/Program-runner/master)|[![Documentation Status](https://readthedocs.org/projects/incor/badge/?version=latest)](http://incor.readthedocs.io/en/latest/?badge=latest)
 
@@ -20,7 +20,7 @@ Getting Started
 Clone this repository to get started.
 
 ``` sourceCode
-git clone https://github.com/lakshmanaram/Program-runner.git
+git clone https://github.com/lakshmanaram/Incor.git
 ```
 
 And install it.
