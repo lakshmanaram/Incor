@@ -64,7 +64,7 @@ class EventHandler(FileSystemEventHandler):
                 print('issuing system call - ' + self.cmd)
                 call(self.cmd, cwd=self.path, shell=True)
 
-                if(os.path.isfile(out_path)):
+                if os.path.isfile(out_path):
                     # if the output file has been created
                     if out_path[:2] != './':
                         out_path = './' + out_path
@@ -96,10 +96,9 @@ class EventHandler(FileSystemEventHandler):
                 print('issuing system call - ' + self.cmd)
                 call(self.cmd, cwd=self.path, shell=True)
 
-                if(os.path.isfile(out_path)):
+                if os.path.isfile(out_path):
                     # if the output file has been created
-                    if out_path[:2] != './':
-                        out_path = './' + out_path
+                    out_path = './' + out_path
                     self.cmd = out_path
                     print('issuing system call - ' + self.cmd)
                     self.newCmd = True
@@ -108,13 +107,14 @@ class EventHandler(FileSystemEventHandler):
         if not event.is_directory:
             cur_path = event.src_path
             file_extension = cur_path.split('.')[-1]
-            name = self.TemplateName + file_extension
-            f_created = open(cur_path, 'rw')
-            if f_created.read() == '':
-                for root, dirs, files in os.walk(self.path):
-                    if name in files:
-                        f = open(os.path.join(root, name))
-                        f_created.write(f.read())
-                        f.close()
-                        break
-            f_created.close()
+            if file_extension in ['py', 'cpp', 'c']:
+                name = self.TemplateName + file_extension
+                f_created = open(cur_path, 'rw')
+                if f_created.read() == '':
+                    for root, dirs, files in os.walk(self.path):
+                        if name in files:
+                            f = open(os.path.join(root, name))
+                            f_created.write(f.read())
+                            f.close()
+                            break
+                f_created.close()
