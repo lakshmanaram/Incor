@@ -13,20 +13,33 @@ def main():
     if path == '--version':
         print('incor v' + incor.__version__)
         return
-    observer = Observer()
+    template = 'template.'
+    if path == '-t':
+        # changes template file name for the run
+        path = sys.argv[3] if len(sys.argv) > 3 else '.'
+        template = sys.argv[2] if len(sys.argv) > 2 else 'template.'
+
     eventhandler = EventHandler(path)
     eventhandler.parentPid = os.getpid()  # parent process pid
+    eventhandler.TemplateName = template
+
+    observer = Observer()
     observer.schedule(eventhandler, path, recursive=True)
     observer.start()
     try:
         while True:
             if eventhandler.newCmd:
+
+                # stores the status of the cmd
                 eventhandler.newCmd = False
+
+                # flushes the keystrokes of the previously terminated program
                 sys.stdout.flush()
                 sys.stdout.flush()
                 tcflush(sys.stdin, TCIOFLUSH)
-                # flushes the keystrokes of the previously terminated program
-                call(eventhandler.cmd, shell=True)
+
+                # creates a child process that executes the final command
+                call(eventhandler.cmd, shell=True, cwd=path)
             time.sleep(1)
     except KeyboardInterrupt:
         observer.stop()

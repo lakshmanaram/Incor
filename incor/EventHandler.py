@@ -8,20 +8,22 @@ import psutil
 class EventHandler(FileSystemEventHandler):
     # TODO Add docstrings
 
-    parentPid = None
-    cmd = None
-    newCmd = False
-    lastCall = ''
-
     def __init__(self, path):
         self.path = path
+        self.TemplateName = False
+        self.newCmd = False
+        self.parentPid = None
+        self.cmd = None
+        self.lastCall = ''
 
     def on_modified(self, event):
         if not event.is_directory:
             # Checks whether the created event is not a directory event
             cur_path = event.src_path
             file_extension = cur_path.split('.')[-1]
+
             if file_extension == 'py':
+                # python files
                 parent = ''
                 try:
                     parent = psutil.Process(self.parentPid)
@@ -36,7 +38,9 @@ class EventHandler(FileSystemEventHandler):
                 self.cmd = 'python ' + cur_path
                 print('issuing system call - ' + self.cmd)
                 self.newCmd = True
+
             elif file_extension == "cpp":
+                # cpp files
                 parent = ''
                 try:
                     parent = psutil.Process(self.parentPid)
@@ -53,21 +57,21 @@ class EventHandler(FileSystemEventHandler):
                 # removes the existing output file
                 self.cmd = 'rm ' + out_path
                 print('issuing system call - ' + self.cmd)
-                call(self.cmd, shell=True)
+                call(self.cmd, cwd=self.path, shell=True)
 
                 # compiles the cpp program
                 self.cmd = 'g++ ' + cur_path + ' -o ' + out_path
                 print('issuing system call - ' + self.cmd)
-                call(self.cmd, shell=True)
+                call(self.cmd, cwd=self.path, shell=True)
 
                 if(os.path.isfile(out_path)):
                     # if the output file has been created
                     if out_path[:2] != './':
                         out_path = './' + out_path
                     self.cmd = out_path
-                    # './' in the beginning is necessary for execution but an extra './' doesn't affect the output
                     print('issuing system call - ' + self.cmd)
                     self.newCmd = True
+
             elif file_extension == "c":
                 parent = ''
                 try:
@@ -85,19 +89,18 @@ class EventHandler(FileSystemEventHandler):
                 # removes the existing output file
                 self.cmd = 'rm ' + out_path
                 print('issuing system call - ' + self.cmd)
-                call(self.cmd, shell=True)
+                call(self.cmd, cwd=self.path, shell=True)
 
-                # compiles the cpp program
+                # compiles the c program
                 self.cmd = 'gcc ' + cur_path + ' -o ' + out_path
                 print('issuing system call - ' + self.cmd)
-                call(self.cmd, shell=True)
+                call(self.cmd, cwd=self.path, shell=True)
 
                 if(os.path.isfile(out_path)):
                     # if the output file has been created
                     if out_path[:2] != './':
                         out_path = './' + out_path
                     self.cmd = out_path
-                    # './' in the beginning is necessary for execution but an extra './' doesn't affect the output
                     print('issuing system call - ' + self.cmd)
                     self.newCmd = True
 
@@ -105,7 +108,7 @@ class EventHandler(FileSystemEventHandler):
         if not event.is_directory:
             cur_path = event.src_path
             file_extension = cur_path.split('.')[-1]
-            name = 'template.' + file_extension
+            name = self.TemplateName + file_extension
             f_created = open(cur_path, 'rw')
             if f_created.read() == '':
                 for root, dirs, files in os.walk(self.path):
