@@ -7,7 +7,7 @@ except ImportError:
 
 setup(name='incor',
       version=incor.__version__,
-      install_requires=['watchdog>=0.8.2'],
+      install_requires=['watchdog>=0.8.2', 'psutil>=4.3.0', 'subprocess32>=3.2.7'],
       description='INstant COde Runner runs the programs present in the mentioned folder '
                   'instantaneously as and when changes are made.',
       url='https://github.com/lakshmanaram/Program-runner/',
