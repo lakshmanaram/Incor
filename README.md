@@ -3,9 +3,9 @@ INCOR
 
 INstant COde Runner runs the programs present in the mentioned directory instantaneously as and when changes are saved.
 
-| Quality |
-| ------------ |
-| [![Code Health](https://landscape.io/github/lakshmanaram/Program-runner/master/landscape.svg?style=flat)](https://landscape.io/github/lakshmanaram/Program-runner/master)
+| Quality | Documentation |
+| --------|---------------|
+| [![Code Health](https://landscape.io/github/lakshmanaram/Program-runner/master/landscape.svg?style=flat)](https://landscape.io/github/lakshmanaram/Program-runner/master)|[![Documentation Status](https://readthedocs.org/projects/program-runner/badge/?version=latest)](http://program-runner.readthedocs.io/en/latest/?badge=latest)
 
 Requirements
 ------------
