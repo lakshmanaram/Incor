@@ -130,7 +130,7 @@ class EventHandler(FileSystemEventHandler):
             file_extension = cur_path.split('.')[-1]
             if file_extension in ['py', 'cpp', 'c']:
                 name = self.TemplateName + file_extension
-                f_created = open(cur_path, 'rw')
+                f_created = open(cur_path, 'r+')
                 if f_created.read() == '':
                     for root, dirs, files in os.walk(self.path):
                         if name in files:
