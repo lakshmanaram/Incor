@@ -81,6 +81,7 @@ All the empty files created in the present directory with extansion in [cpp,c,py
 ``` sourceCode
     incor path/to/the/directory -t
 ```
+![template example](https://github.com/lakshmanaram/Incor/blob/master/examples/template.gif)
 
 Using Input files
 ------------------
@@ -100,8 +101,8 @@ All the successfully compiled and executed programs will use a.txt present in th
 ``` sourceCode
 incor -i a.txt
 ```
-Video Demo
-----------
+Demo
+-----
 
 [Youtube link](https://youtu.be/KhJZ1N7fS6o)
 
@@ -120,10 +121,13 @@ incor can be configured for a run using these options -
 >
 > -py To specify the python interpreter to be used.
 
+![compiler_option](https://github.com/lakshmanaram/Incor/blob/master/examples/setting_compiler.gif)
+
 Contributors
 ------------
 
   [Srivatsan R](https://github.com/srivatsan-ramesh)
+  
   [Adarsh B](https://github.com/badarsh2)
 
 If you have an idea for a new feature that could be added, Go ahead! I will be happy to see a pull request from you! :smile:
