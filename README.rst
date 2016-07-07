@@ -10,7 +10,6 @@ Requirements
 * python>=2.7
 * watchdog>=0.8.2
 * psutil>=4.3.0
-* subprocess32>=3.2.7
 
 Getting Started
 ---------------

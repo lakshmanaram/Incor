@@ -1,7 +1,7 @@
 import os
 import signal
 from watchdog.events import FileSystemEventHandler
-from subprocess32 import call
+from subprocess import call
 import psutil
 
 

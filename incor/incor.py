@@ -48,7 +48,7 @@ def main():
                 tcflush(sys.stdin, TCIOFLUSH)
 
                 # creates a child process that executes the final command
-                if input is not None:
+                if input_file is not None:
                     input_fd = open(input_file, 'r')
                     call(eventhandler.cmd, shell=True, cwd=path, stdin=input_fd)
                     input_fd.close()
