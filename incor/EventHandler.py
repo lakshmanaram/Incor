@@ -59,11 +59,15 @@ class EventHandler(FileSystemEventHandler):
                 self.cmd = 'g++ ' + cur_path + ' -o ' + out_path
                 print('issuing system call - ' + self.cmd)
                 call(self.cmd, shell=True)
-                # TODO check corner cases, handle errors while execution
-                self.cmd = './' + out_path
-                # './' in the beginning is necessary for execution but an extra './' doesn't affect the output
-                print('issuing system call - ' + self.cmd)
-                self.newCmd = True
+
+                if(os.path.isfile(out_path)):
+                    # if the output file has been created
+                    if out_path[:2] != './':
+                        out_path = './' + out_path
+                    self.cmd = out_path
+                    # './' in the beginning is necessary for execution but an extra './' doesn't affect the output
+                    print('issuing system call - ' + self.cmd)
+                    self.newCmd = True
 
     def on_created(self, event):
         if not event.is_directory:
