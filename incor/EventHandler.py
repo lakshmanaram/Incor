@@ -24,7 +24,9 @@ class EventHandler(FileSystemEventHandler):
 
         """
         Overrides the function on_modified() from the base class
+
         :param watchdog.events.FileModifiedEvent event: Specifies the type of event
+
         """
 
         if not event.is_directory:
@@ -117,7 +119,9 @@ class EventHandler(FileSystemEventHandler):
 
         """
         Overrides the function on_created() from the base class
-        :param watchdog.events.FileCreatedEvent event: Specifies the type of event
+
+        :param watchdog.events.FileModifiedEvent event: Specifies the type of event
+
         """
 
         if not event.is_directory:
