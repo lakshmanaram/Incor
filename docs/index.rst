@@ -9,17 +9,18 @@ INCOR
 INstant COde Runner
 runs the programs present in the mentioned directory instantaneously as and when changes are saved.
 
-+-----------------+--------------------------+
-| Quality         | Documentation            |
-+=================+==========================+
-| |Code Health|   | |Documentation Status|   |
-+-----------------+--------------------------+
++------------------+-----------------+--------------------------+
+| Version          | Quality         |      Documentation       |
++==================+=================+==========================+
+| |PyPI version|   | |Code Health|   | |Documentation Status|   |
++------------------+-----------------+--------------------------+
 
+.. |PyPI version| image:: https://badge.fury.io/py/incor.svg
+   :target: https://badge.fury.io/py/incor
 .. |Code Health| image:: https://landscape.io/github/lakshmanaram/Program-runner/master/landscape.svg?style=flat
    :target: https://landscape.io/github/lakshmanaram/Program-runner/master
 .. |Documentation Status| image:: https://readthedocs.org/projects/incor/badge/?version=latest
    :target: http://incor.readthedocs.io/en/latest/?badge=latest
-
 
 Requirements
 ------------
@@ -30,6 +31,14 @@ Requirements
 
 Getting Started
 ---------------
+
+Install it using pip
+
+.. code-block:: bash
+
+    pip install incor
+
+**Or**
 
 Clone this repository to get started.
 

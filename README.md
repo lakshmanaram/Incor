@@ -3,9 +3,9 @@ INCOR
 
 INstant COde Runner runs the programs present in the mentioned directory instantaneously as and when changes are saved.
 
-| Quality | Docs |
-| --------|---------------|
-| [![Code Health](https://landscape.io/github/lakshmanaram/Program-runner/master/landscape.svg?style=flat)](https://landscape.io/github/lakshmanaram/Program-runner/master)|[![Documentation Status](https://readthedocs.org/projects/incor/badge/?version=latest)](http://incor.readthedocs.io/en/latest/?badge=latest)
+| Version | Quality | Docs |
+|------|--------|-------|
+|[![PyPI version](https://badge.fury.io/py/incor.svg)](https://badge.fury.io/py/incor) | [![Code Health](https://landscape.io/github/lakshmanaram/Program-runner/master/landscape.svg?style=flat)](https://landscape.io/github/lakshmanaram/Program-runner/master)|[![Documentation Status](https://readthedocs.org/projects/incor/badge/?version=latest)](http://incor.readthedocs.io/en/latest/?badge=latest)
 
 Requirements
 ------------
@@ -16,6 +16,13 @@ Requirements
 
 Getting Started
 ---------------
+Install it using pip
+
+```sourceCode
+pip install incor
+```
+
+**Or**
 
 Clone this repository to get started.
 
@@ -117,6 +124,7 @@ Contributors
 ------------
 
   [Srivatsan R](https://github.com/srivatsan-ramesh)
+  [Adarsh B](https://github.com/badarsh2)
 
-If you have an idea for a new feature that could be added, Go ahead! I will be happy to see a pull request from you!
+If you have an idea for a new feature that could be added, Go ahead! I will be happy to see a pull request from you! :smile:
 
