@@ -5,7 +5,7 @@ INstant COde Runner
 runs the programs present in the mentioned directory instantaneously as and when changes are saved. 
 
 +-----------------+--------------------------+
-| Quality         | Docs                     |
+| Quality         | Documentation            |
 +=================+==========================+
 | |Code Health|   | |Documentation Status|   |
 +-----------------+--------------------------+

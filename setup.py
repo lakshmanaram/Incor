@@ -18,4 +18,5 @@ setup(name='incor',
       entry_points={
           'console_scripts': ['incor=incor.main:main'],
       },
+      keywords=['Algorithms', 'Competitive Programming', 'Automatic run', 'Linux', 'g++', 'python', 'gcc', 'c', 'c++', 'Program runner'],
       zip_safe=False)
