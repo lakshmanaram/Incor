@@ -4,9 +4,11 @@ import os
 from watchdog.observers import Observer
 from termios import tcflush, TCIOFLUSH
 import incor
-from incor import EventHandler
 from subprocess import call
-
+try:
+    from incor.EventHandler import EventHandler
+except ImportError:
+    from incor import EventHandler
 
 def main():
     """

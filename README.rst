@@ -59,6 +59,11 @@ Using Templates
 You can also add some template files in the directory where incor runs. The template files should be of the form 'template.(some_extension)' for example 'template.c' or 'template.py'. 
 Whenever a new empty file is created inside the working directory with a particular extension, Incor searches for a template file with the same extension and writes the template into the newly created file.
 
+Video Demo
+----------
+
+`Youtube link <https://youtu.be/KhJZ1N7fS6o>`_
+
 Configuring INCOR
 -----------------
 
@@ -75,4 +80,4 @@ Contributors
 ------------
 `Srivatsan R <https://github.com/srivatsan-ramesh>`_
 
-Feel free to make a Pull Request
+If you have an idea for a new feature that could be added, Go ahead! I will be happy to see a pull request from you!
