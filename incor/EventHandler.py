@@ -28,13 +28,13 @@ class EventHandler(FileSystemEventHandler):
                 try:
                     parent = psutil.Process(self.parentPid)
                 except psutil.NoSuchProcess:
-                    print 'No such process'
+                    print('No such process')
                 children = parent.children(recursive=True)
                 for process in children:
                     process.send_signal(signal.SIGKILL)
                 call('clear', shell=True)
                 if children:
-                    print 'Previously executing processes terminated'
+                    print('Previously executing processes terminated')
                 self.cmd = 'python ' + cur_path
                 print('issuing system call - ' + self.cmd)
                 self.newCmd = True
@@ -45,13 +45,13 @@ class EventHandler(FileSystemEventHandler):
                 try:
                     parent = psutil.Process(self.parentPid)
                 except psutil.NoSuchProcess:
-                    print 'No such process'
+                    print('No such process')
                 children = parent.children(recursive=True)
                 for process in children:
                     process.send_signal(signal.SIGKILL)
                 call('clear', shell=True)
                 if children:
-                    print 'Previously executing processes terminated'
+                    print('Previously executing processes terminated')
                 out_path = cur_path[:-3] + 'out'
 
                 # removes the existing output file
@@ -77,13 +77,13 @@ class EventHandler(FileSystemEventHandler):
                 try:
                     parent = psutil.Process(self.parentPid)
                 except psutil.NoSuchProcess:
-                    print 'No such process'
+                    print('No such process')
                 children = parent.children(recursive=True)
                 for process in children:
                     process.send_signal(signal.SIGKILL)
                 call('clear', shell=True)
                 if children:
-                    print 'Previously executing processes terminated'
+                    print('Previously executing processes terminated')
                 out_path = cur_path[:-3] + 'out'
 
                 # removes the existing output file

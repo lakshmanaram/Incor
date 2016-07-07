@@ -4,7 +4,7 @@ import os
 from watchdog.observers import Observer
 from termios import tcflush, TCIOFLUSH
 import incor
-from EventHandler import EventHandler
+from incor.EventHandler import EventHandler
 from subprocess import call
 
 

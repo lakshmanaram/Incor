@@ -16,6 +16,6 @@ setup(name='incor',
       license='MIT',
       packages=['incor'],
       entry_points={
-          'console_scripts': ['incor=incor.incor:main'],
+          'console_scripts': ['incor=incor.main:main'],
       },
       zip_safe=False)
