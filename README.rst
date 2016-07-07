@@ -51,7 +51,7 @@ General template for running incor.
 
 .. code-block:: bash
 
-    incor /optional/path/to/the/directory [<flag> <flag_value> ...]
+    incor /optional/path/to/the/directory [<option> <value> ...]
 
 Using Templates
 ---------------
@@ -62,13 +62,14 @@ Whenever a new empty file is created inside the working directory with a particu
 Configuring INCOR
 -----------------
 
-incor can be configured for a run using these flags -
+incor can be configured for a run using these options -
 
-    -i   : To specify the input file for the to be compiled program.
-    -t   : To specify the path to template file.
-    -c   : To specify the C compiler to be used.
-    -cpp : To specify the C++ compiler to be used.
-    -py  : To specify the python interpreter to be used.
+    -i    To specify the input file for the to be compiled program.
+    -t    To specify the path to template file.
+    -c    To specify the C compiler to be used.
+    -cpp  To specify the C++ compiler to be used.
+    -py   To specify the python interpreter to be used.
+    
 
 Contributors
 ------------
