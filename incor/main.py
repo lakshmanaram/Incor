@@ -27,7 +27,7 @@ def main():
             value = sys.argv[ind + 1]
             if value not in flag_list:
                 sys.argv = sys.argv[:ind] + sys.argv[ind + 2:]
-                return value
+                return True, value
             else:
                 sys.argv = sys.argv[:ind] + sys.argv[ind + 1:]
                 return True, default
