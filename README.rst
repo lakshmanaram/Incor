@@ -12,8 +12,9 @@ runs the programs present in the mentioned directory instantaneously as and when
 
 .. |Code Health| image:: https://landscape.io/github/lakshmanaram/Program-runner/master/landscape.svg?style=flat
    :target: https://landscape.io/github/lakshmanaram/Program-runner/master
-.. |Documentation Status| image:: https://readthedocs.org/projects/program-runner/badge/?version=latest
-   :target: http://program-runner.readthedocs.io/en/latest/?badge=latest
+.. |Documentation Status| image:: https://readthedocs.org/projects/incor/badge/?version=latest
+   :target: http://incor.readthedocs.io/en/latest/?badge=latest
+
 
 Requirements
 ------------
