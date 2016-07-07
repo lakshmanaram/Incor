@@ -59,20 +59,23 @@ incor /optional/path/to/the/directory [<option> <value> ...]
 Using Templates
 ---------------
 
-You can also add some template files in the directory where incor runs. The template files should be of the form ‘template.(some\_extension)’ for example ‘template.c’ or ‘template.py’. Whenever a new empty file is created inside the working directory with a particular extension, Incor searches for a template file with the same extension and writes the template into the newly created file.
+You can also add some template files in the directory where incor runs. The template files should be of the form 'template.(some_extension)' for example 'template.c' or 'template.py'.
+Whenever a new empty file is created inside the working directory with a particular extension, Incor searches for a template file with the same extension and writes the template into the newly created file.
 
 **Example:**
 
-All the empty files created in the present director with .cpp extansion will have the contents of a.cpp
+All the empty files created in the present directory with .cpp extansion will have the contents of a.cpp, .c extansion will have the contents of a.c and .py extansion will have the contents of a.py
+
 ``` sourceCode
-incor -t a.cpp
+    incor -t a
 ```
-All the empty files created in the present director with .cpp extansion will have the contents of template.cpp if available anywhere in the path/to/the/directory
+All the empty files created in the present directory with extansion in [cpp,c,py] will have the contents of template.extension if available anywhere in the path/to/the/directory
+
 ``` sourceCode
-incor path/to/the/directory -t
+    incor path/to/the/directory -t
 ```
 
-Using Input files:
+Using Input files
 ------------------
 
 You can also add some input files in the directory where incor runs. The default input file is 'input.txt'.

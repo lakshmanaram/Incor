@@ -72,19 +72,19 @@ Whenever a new empty file is created inside the working directory with a particu
 
 **Example:**
 
-All the empty files created in the present director with .cpp extansion will have the contents of a.cpp
+All the empty files created in the present directory with .cpp extansion will have the contents of a.cpp, .c extansion will have the contents of a.c and .py extansion will have the contents of a.py
 
 .. code-block:: bash
 
-    incor -t a.cpp
+    incor -t a
 
-All the empty files created in the present director with .cpp extansion will have the contents of template.cpp if available anywhere in the path/to/the/directory
+All the empty files created in the present directory with extansion in [cpp,c,py] will have the contents of template.extension if available anywhere in the path/to/the/directory
 
 .. code-block:: bash
 
     incor path/to/the/directory -t
 
-Using Input files:
+Using Input files
 ------------------
 
 You can also add some input files in the directory where incor runs. The default input file is 'input.txt'.
