@@ -88,6 +88,7 @@ def main():
                 sys.stdout.flush()
                 tcflush(sys.stdin, TCIOFLUSH)
 
+                start_time = time.time()
                 # creates a child process that executes the final command
                 if input_file is not None:
                     input_fd = open(input_file, 'r')
@@ -95,7 +96,7 @@ def main():
                     input_fd.close()
                 else:
                     call(eventhandler.cmd, shell=True)
-                # print "\n-----------------------------\nProgram execution terminated."
+                print('\n--------------------------------------------------------\nProgram execution terminated in %s seconds.' % (time.time()-start_time))
             time.sleep(1)
     except KeyboardInterrupt:
         observer.stop()
