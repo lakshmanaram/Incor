@@ -12,13 +12,14 @@ class EventHandler(FileSystemEventHandler):
     on_created() from the base class.
     """
 
-    def __init__(self, path):
+    def __init__(self, path, compilers):
         self.path = path
         self.TemplateName = False
         self.newCmd = False
         self.parentPid = None
         self.cmd = None
         self.lastCall = ''
+        self.compilers = compilers
 
     def on_modified(self, event):
 
@@ -47,7 +48,7 @@ class EventHandler(FileSystemEventHandler):
                 call('clear', shell=True)
                 if children:
                     print('Previously executing processes terminated')
-                self.cmd = 'python ' + cur_path
+                self.cmd = self.compilers[2] + ' ' + cur_path
                 print('issuing system call - ' + self.cmd)
                 self.newCmd = True
 
@@ -72,7 +73,7 @@ class EventHandler(FileSystemEventHandler):
                 call(self.cmd, cwd=self.path, shell=True)
 
                 # compiles the cpp program
-                self.cmd = 'g++ ' + cur_path + ' -o ' + out_path
+                self.cmd = self.compilers[0] + ' ' + cur_path + ' -o ' + out_path
                 print('issuing system call - ' + self.cmd)
                 call(self.cmd, cwd=self.path, shell=True)
 
@@ -104,7 +105,7 @@ class EventHandler(FileSystemEventHandler):
                 call(self.cmd, cwd=self.path, shell=True)
 
                 # compiles the c program
-                self.cmd = 'gcc ' + cur_path + ' -o ' + out_path
+                self.cmd = self.compilers[1] + ' ' + cur_path + ' -o ' + out_path
                 print('issuing system call - ' + self.cmd)
                 call(self.cmd, cwd=self.path, shell=True)
 

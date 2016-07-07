@@ -47,14 +47,31 @@ Or else you can run it directly with the path of the directory.
 
     incor /path/to/the/directory
 
+General template for running incor.
+
+.. code-block:: bash
+
+    incor /optional/path/to/the/directory [<flag> <flag_value> ...]
+
 Using Templates
 ---------------
 
 You can also add some template files in the directory where incor runs. The template files should be of the form 'template.(some_extension)' for example 'template.c' or 'template.py'. 
 Whenever a new empty file is created inside the working directory with a particular extension, Incor searches for a template file with the same extension and writes the template into the newly created file.
 
+Configuring INCOR
+-----------------
+
+incor can be configured for a run using these flags -
+
+    -i   : To specify the input file for the to be compiled program.
+    -t   : To specify the path to template file.
+    -c   : To specify the C compiler to be used.
+    -cpp : To specify the C++ compiler to be used.
+    -py  : To specify the python interpreter to be used.
+
 Contributors
 ------------
 `Srivatsan R <https://github.com/srivatsan-ramesh>`_
 
-Feel free to send a Pull Request 
+Feel free to make a Pull Request

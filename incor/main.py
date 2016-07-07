@@ -9,31 +9,54 @@ from subprocess import call
 
 
 def main():
-
     """
     The entry function for the command 'incor' in terminal
     """
 
     template = 'template.'
     input_file = None
+    compilers = ['g++', 'gcc', 'python']
+    flag_list = ['-t', '-i', '-cpp', '-c', '-py']
 
-    path = sys.argv[1] if len(sys.argv) > 1 else '.'
+    path = sys.argv[1] if len(sys.argv) > 1 and sys.argv[1] not in flag_list else '.'
     if path == '--version':
         print('incor v' + incor.__version__)
         return
-    if path == '-t':
-        # changes template file name for the run
-        path = sys.argv[3] if len(sys.argv) > 3 else '.'
-        template = sys.argv[2] if len(sys.argv) > 2 else 'template.'
-    elif path == '-i':
-        # input file
-        path = sys.argv[3] if len(sys.argv) > 3 else '.'
-        input_name = sys.argv[2] if len(sys.argv) > 2 else 'input.txt'
+    if path == '-h' or path == '--help':
+        print("""incor can be configured for a run using these flags -
+
+    -i   : To specify the input file for the to be compiled program.
+    -t   : To specify the path to template file.
+    -c   : To specify the C compiler to be used.
+    -cpp : To specify the C++ compiler to be used.
+    -py  : To specify the python interpreter to be used.
+
+        """)
+        return
+
+    def get_arg(arg):
+        try:
+            ind = sys.argv.index(arg)
+            value = sys.argv[ind + 1]
+            sys.argv = sys.argv[:ind] + sys.argv[ind + 2:]
+            return value
+        except ValueError:
+            return None
+
+    assign_arg = lambda default, value: default if value is None else value
+
+    template = assign_arg(template, get_arg('-t'))
+    input_name = assign_arg(None, get_arg('-i'))
+    if input_name is not None:
         for root, dirs, files in os.walk(path):
             if input_name in files:
                 input_file = os.path.join(root, input_name)
                 break
-    eventhandler = EventHandler(path)
+    compilers[0] = assign_arg(compilers[0], get_arg('-cpp'))
+    compilers[1] = assign_arg(compilers[1], get_arg('-c'))
+    compilers[2] = assign_arg(compilers[2], get_arg('-py'))
+
+    eventhandler = EventHandler(path, compilers)
     eventhandler.parentPid = os.getpid()  # parent process pid
     eventhandler.TemplateName = template
 
