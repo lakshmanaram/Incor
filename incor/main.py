@@ -13,7 +13,7 @@ def main():
     The entry function for the command 'incor' in terminal
     """
 
-    template = 'template.'
+    template = 'template'
     input_file = None
     compilers = ['g++', 'gcc', 'python']
     flag_list = ['-t', '-i', '-cpp', '-c', '-py']
@@ -26,7 +26,7 @@ def main():
         print("""incor can be configured for a run using these options -
 
     -i   : To specify the input file for the to be compiled program.
-    -t   : To specify the path to template file.
+    -t   : To specify the name of template file(without extension).
     -c   : To specify the C compiler to be used.
     -cpp : To specify the C++ compiler to be used.
     -py  : To specify the python interpreter to be used.

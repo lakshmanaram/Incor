@@ -14,7 +14,7 @@ class EventHandler(FileSystemEventHandler):
 
     def __init__(self, path, compilers):
         self.path = path
-        self.TemplateName = False
+        self.TemplateName = ''
         self.newCmd = False
         self.parentPid = None
         self.cmd = None
@@ -129,7 +129,7 @@ class EventHandler(FileSystemEventHandler):
             cur_path = event.src_path
             file_extension = cur_path.split('.')[-1]
             if file_extension in ['py', 'cpp', 'c']:
-                name = self.TemplateName + file_extension
+                name = self.TemplateName + '.' + file_extension
                 f_created = open(cur_path, 'r+')
                 if f_created.read() == '':
                     for root, dirs, files in os.walk(self.path):
