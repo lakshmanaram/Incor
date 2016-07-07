@@ -2,13 +2,15 @@ INCOR
 =====
 
 INstant COde Runner
-runs the programs present in the mentioned folder instantaneously as and when changes are made. 
+runs the programs present in the mentioned directory instantaneously as and when changes are saved. 
 
 Requirements
 ------------
 
 * python>=2.7
 * watchdog>=0.8.2
+* psutil>=4.3.0
+* subprocess32>=3.2.7
 
 Getting Started
 ---------------
@@ -31,8 +33,8 @@ You can also install it for development.
 
     python setup.py develop
 
-Using The Package
------------------
+How to Use
+----------
 
 Nagigate to the folder where you want the files to be compiled and run instantly and type this in the terminal
 
@@ -52,4 +54,8 @@ Using Templates
 You can also add some template files in the directory where incor runs. The template files should be of the form 'template.(some_extension)' for example 'template.c' or 'template.py'. 
 Whenever a new empty file is created inside the working directory with a particular extension, Incor searches for a template file with the same extension and writes the template into the newly created file.
 
+Contributors
+------------
+`Srivatsan R <https://github.com/srivatsan-ramesh>`_
 
+Feel free to send a Pull Request 
