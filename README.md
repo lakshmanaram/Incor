@@ -19,7 +19,7 @@ Getting Started
 Install it using pip
 
 ```sourceCode
-pip install incor
+sudo pip install incor
 ```
 
 **Or**
