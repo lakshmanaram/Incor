@@ -36,7 +36,7 @@ Install it using pip
 
 .. code-block:: bash
 
-    pip install incor
+    sudo pip install incor
 
 **Or**
 
