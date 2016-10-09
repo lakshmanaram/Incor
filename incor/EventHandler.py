@@ -22,7 +22,6 @@ class EventHandler(FileSystemEventHandler):
         self.compilers = compilers
 
     def on_modified(self, event):
-
         """
         Overrides the function on_modified() from the base class
 
@@ -74,7 +73,8 @@ class EventHandler(FileSystemEventHandler):
                     call(self.cmd, shell=True)
 
                 # compiles the cpp program
-                self.cmd = self.compilers[0] + ' ' + cur_path + ' -o ' + out_path
+                self.cmd = self.compilers[0] + \
+                    ' ' + cur_path + ' -o ' + out_path
                 print('issuing system call - ' + self.cmd)
                 call(self.cmd, shell=True)
 
@@ -108,7 +108,8 @@ class EventHandler(FileSystemEventHandler):
                     call(self.cmd, shell=True)
 
                 # compiles the c program
-                self.cmd = self.compilers[1] + ' ' + cur_path + ' -o ' + out_path
+                self.cmd = self.compilers[1] + \
+                    ' ' + cur_path + ' -o ' + out_path
                 print('issuing system call - ' + self.cmd)
                 call(self.cmd, shell=True)
 
@@ -120,7 +121,6 @@ class EventHandler(FileSystemEventHandler):
                     self.newCmd = True
 
     def on_created(self, event):
-
         """
         Overrides the function on_created() from the base class
 

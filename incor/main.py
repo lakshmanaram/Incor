@@ -53,7 +53,8 @@ def main():
     elif path == '-h' or path == '--help':
         print("""incor can be configured for a run using these options -
 
-    -i   : To specify the input file name for the to be compiled program(with extension).
+    -i   : To specify the input file name for the to be compiled program
+    (with extension).
     -t   : To specify the name of template file(without extension).
     -c   : To specify the C compiler to be used.
     -cpp : To specify the C++ compiler to be used.
@@ -73,7 +74,7 @@ def main():
                 input_file = os.path.join(root, input_name)
                 break
         if input_file is None:
-            print(input_name+' not found')
+            print(input_name + ' not found')
     eventhandler = EventHandler(path, compilers)
     eventhandler.parentPid = os.getpid()  # parent process pid
     eventhandler.TemplateName = template
@@ -101,7 +102,8 @@ def main():
                     input_fd.close()
                 else:
                     call(eventhandler.cmd, shell=True)
-                print('\n--------------------------------------------------------\nProgram execution terminated in %s seconds.' % (time.time()-start_time))
+                print('\n--------------------------------------------------------\nProgram execution terminated in %s seconds.' %
+                      (time.time() - start_time))
             time.sleep(1)
     except KeyboardInterrupt:
         observer.stop()

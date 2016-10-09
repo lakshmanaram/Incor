@@ -45,7 +45,7 @@ python setup.py develop
 How to Use
 ----------
 
-Nagigate to the folder where you want the files to be compiled and executed instantly and type this in the terminal
+Navigate to the folder where you want the files to be compiled and executed instantly and type this in the terminal
 
 ``` sourceCode
 incor
