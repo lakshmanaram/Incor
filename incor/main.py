@@ -102,7 +102,8 @@ def main():
                     input_fd.close()
                 else:
                     call(eventhandler.cmd, shell=True)
-                print('\n--------------------------------------------------------\nProgram execution terminated in %s seconds.' %
+                print('\n---------------------------------------------------')
+                print('Program execution terminated in %s seconds.' %
                       (time.time() - start_time))
             time.sleep(1)
     except KeyboardInterrupt:

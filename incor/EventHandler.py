@@ -8,8 +8,8 @@ import psutil
 class EventHandler(FileSystemEventHandler):
 
     """
-    The class inherited from watchdog.events.FileSystemEventHandler, overrides the functions on_modified() and
-    on_created() from the base class.
+    The class inherited from watchdog.events.FileSystemEventHandler, overrides
+    the functions on_modified() and on_created() from the base class.
     """
 
     def __init__(self, path, compilers):
@@ -25,7 +25,8 @@ class EventHandler(FileSystemEventHandler):
         """
         Overrides the function on_modified() from the base class
 
-        :param watchdog.events.FileModifiedEvent event: Specifies the type of event
+        :param watchdog.events.FileModifiedEvent event:
+        Specifies the type of event
 
         """
 
@@ -124,7 +125,8 @@ class EventHandler(FileSystemEventHandler):
         """
         Overrides the function on_created() from the base class
 
-        :param watchdog.events.FileModifiedEvent event: Specifies the type of event
+        :param watchdog.events.FileModifiedEvent event:
+        Specifies the type of event
 
         """
 

@@ -19,6 +19,11 @@
 #
 import os
 import sys
+
+import incor
+
+import sphinx_rtd_theme
+
 # sys.path.insert(0, os.path.abspath('.'))
 sys.path.insert(0, os.path.abspath("../"))
 # -- General configuration ------------------------------------------------
@@ -61,7 +66,6 @@ author = 'lakshmanaram, srivatsan-ramesh'
 # built documents.
 #
 # The short X.Y version.
-import incor
 version = incor.__version__
 # The full version, including alpha/beta/rc tags.
 release = incor.__version__
@@ -149,8 +153,8 @@ html_theme = 'alabaster'
 # html_logo = None
 
 # The name of an image file (relative to this directory) to use as a favicon of
-# the docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
-# pixels large.
+# the docs.  This file should be a Windows icon file (.ico) being 16x16 or
+# 32x32 pixels large.
 #
 # html_favicon = None
 
@@ -315,8 +319,10 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
     (master_doc, 'incor', 'incor Documentation',
-     author, 'incor', 'INstant COde Runner runs the programs present in the mentioned folder '
-                      'instantaneously as and when changes are made.',
+     author, 'incor',
+     'INstant COde Runner runs the programs present in the mentioned folder '
+     'detects and runs programs in the mentioned directory as ' +
+     'and when changes are made.',
      'Miscellaneous'),
 ]
 
@@ -335,8 +341,6 @@ texinfo_documents = [
 # If true, do not generate a @detailmenu in the "Top" node's menu.
 #
 # texinfo_no_detailmenu = False
-
-import sphinx_rtd_theme
 
 html_theme = "sphinx_rtd_theme"
 
