@@ -71,12 +71,12 @@ Whenever a new empty file is created inside the working directory with a particu
 
 **Example:**
 
-All the empty files created in the present directory with .cpp extansion will have the contents of a.cpp, .c extansion will have the contents of a.c and .py extansion will have the contents of a.py
+All the empty files created in the present directory with .cpp extension will have the contents of a.cpp, .c extension will have the contents of a.c and .py extension will have the contents of a.py
 
 ``` sourceCode
     incor -t a
 ```
-All the empty files created in the present directory with extansion in [cpp,c,py] will have the contents of template.extension if available anywhere in the path/to/the/directory
+All the empty files created in the present directory with extension in [cpp,c,py] will have the contents of template.extension if available anywhere in the path/to/the/directory
 
 ``` sourceCode
     incor path/to/the/directory -t
