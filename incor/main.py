@@ -18,8 +18,8 @@ def main():
 
     template = 'template'
     input_file = None
-    compilers = ['g++', 'gcc', 'python']
-    flag_list = ['-t', '-i', '-cpp', '-c', '-py']
+    compilers = ['g++', 'gcc', 'python', 'julia']
+    flag_list = ['-t', '-i', '-cpp', '-c', '-py', '-jl']
 
     def get_arg(arg, default=None):
         try:
@@ -45,6 +45,7 @@ def main():
     present, compilers[0] = get_arg('-cpp', compilers[0])
     present, compilers[1] = get_arg('-c', compilers[1])
     present, compilers[2] = get_arg('-py', compilers[2])
+    present, compilers[3] = get_arg('-jl', compilers[3])
 
     path = sys.argv[1] if len(sys.argv) > 1 else '.'
     if path == '--version':
@@ -59,6 +60,7 @@ def main():
     -c   : To specify the C compiler to be used.
     -cpp : To specify the C++ compiler to be used.
     -py  : To specify the python interpreter to be used.
+    -jl  : To specify the julia interpreter to be used.
 
         """)
         return

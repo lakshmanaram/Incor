@@ -52,6 +52,23 @@ class EventHandler(FileSystemEventHandler):
                 print('issuing system call - ' + self.cmd)
                 self.newCmd = True
 
+            elif file_extension == 'jl':
+                # julia files
+                parent = ''
+                try:
+                    parent = psutil.Process(self.parentPid)
+                except psutil.NoSuchProcess:
+                    print('No such process')
+                children = parent.children(recursive=True)
+                for process in children:
+                    process.send_signal(signal.SIGKILL)
+                call('clear', shell=True)
+                if children:
+                    print('Previously executing processes terminated')
+                self.cmd = self.compilers[3] + ' ' + cur_path
+                print('issuing system call - ' + self.cmd)
+                self.newCmd = True
+
             elif file_extension == "cpp":
                 # cpp files
                 parent = ''
