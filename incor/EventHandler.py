@@ -150,7 +150,7 @@ class EventHandler(FileSystemEventHandler):
         if not event.is_directory:
             cur_path = event.src_path
             file_extension = cur_path.split('.')[-1]
-            if file_extension in ['py', 'cpp', 'c']:
+            if file_extension in ['py', 'cpp', 'c', 'jl']:
                 name = self.TemplateName + '.' + file_extension
                 f_created = open(cur_path, 'r+')
                 if f_created.read() == '':
