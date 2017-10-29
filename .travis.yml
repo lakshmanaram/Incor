@@ -5,4 +5,5 @@ python:
 install:
     pip install -r requirements-dev.txt
 script:
+    - setenv "PYTHONIOENCODING" "utf8"
     - flake8
