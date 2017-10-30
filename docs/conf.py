@@ -26,7 +26,7 @@ import sphinx_rtd_theme
 sys.path.insert(0, os.path.abspath("../"))
 # -- General configuration ------------------------------------------------
 
-from incor import incor
+import incor
 
 # If your documentation needs a minimal Sphinx version, state it here.
 #
