@@ -17,7 +17,7 @@ runs the programs present in the mentioned directory instantaneously as and when
 
 .. |PyPI version| image:: https://badge.fury.io/py/incor.svg
    :target: https://badge.fury.io/py/incor
-.. |Code Health| image:: https://landscape.io/github/lakshmanaram/Program-runner/master/landscape.svg?style=flat
+.. |Code Health| image:: https://landscape.io/github/lakshmanaram/Incor/master/landscape.svg?style=flat
    :target: https://landscape.io/github/lakshmanaram/Program-runner/master
 .. |Documentation Status| image:: https://readthedocs.org/projects/incor/badge/?version=latest
    :target: http://incor.readthedocs.io/en/latest/?badge=latest
@@ -99,10 +99,6 @@ All the empty files created in the present directory with extansion in [cpp,c,py
 
     incor path/to/the/directory -t
 
-|Template Example|
-
-.. |Template Example| image:: https://github.com/lakshmanaram/Incor/blob/master/examples/template.gif
-
 Using Input files
 ------------------
 
@@ -138,10 +134,6 @@ incor can be configured for a run using these options -
     -c    To specify the C compiler to be used.
     -cpp  To specify the C++ compiler to be used.
     -py   To specify the python interpreter to be used.
-
-|Compiler Options|
-
-.. |Compiler Options| image:: https://github.com/lakshmanaram/Incor/blob/master/examples/setting_compiler.gif
 
 Contributors
 ------------
