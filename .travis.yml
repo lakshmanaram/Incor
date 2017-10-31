@@ -5,4 +5,4 @@ python:
 install:
     pip install -r requirements-dev.txt
 script:
-    - flake8
+    - flake8 --exclude=docs

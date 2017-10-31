@@ -19,7 +19,8 @@ def main():
     template = 'template'
     input_file = None
     compilers = ['g++', 'gcc', 'python', 'julia']
-    flag_list = ['-t', '-i', '-cpp', '-c', '-py', '-jl']
+    compiler_flags = ['-cpp', '-c', '-py', '-jl']
+    flag_list = ['-t', '-i']
 
     def get_arg(arg, default=None):
         try:
@@ -42,10 +43,8 @@ def main():
     present, input_name = get_arg('-i')
     if input_name is None and present:
         input_name = 'input.txt'
-    present, compilers[0] = get_arg('-cpp', compilers[0])
-    present, compilers[1] = get_arg('-c', compilers[1])
-    present, compilers[2] = get_arg('-py', compilers[2])
-    present, compilers[3] = get_arg('-jl', compilers[3])
+    for flag, compiler in zip(compiler_flags, compilers):
+        present, compiler = get_arg(flag, compiler)
 
     path = sys.argv[1] if len(sys.argv) > 1 else '.'
     if path == '--version':
